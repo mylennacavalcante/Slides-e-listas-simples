@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-ber">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>Slides e Lista Simples</h1>
+    </header>
+    <main>
+        <section>
+            <div class="topo">
+                <button>
+
+                    < </button>
+                        <img src="" alt="">
+                        <button> > </button>
+            </div>
+
+            <div class="top1">
+                <input type="text" id="nome" placeholder="Nome">
+                <input type="text" id="descricao" placeholder="Descrição">
+                <input type="text" id="imagem" placeholder="URL da imagem">
+                <button onclick="adicionarProduto()">adicionar</button>
+            </div>
+        </section>
+        <section id="pdt" class="produtos">
+
+        </section>
+    </main>
+    <script>
+        let produto = [{
+            nome: "HTML",
+            descricao: "Estrutura o conteúdo da página",
+            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZYA3WcTmR_KdPwW87vPuul-FG7Wl5u1T_Q&s"
+        },
+
+        {
+            nome: "CSS",
+            descricao: "Estiliza o conteúdo",
+            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9c01S6mDjzJA_z4NSwaNYkmTBWrBC2sHwHA&s"
+        },
+        {
+            nome: "JavaScript",
+            descricao: "Interatividade e comportamento dinâmico",
+            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGE29JAwdezw2GzGhPL-SF0SJhiSehfq6zjA&s"
+        }]
+
+
+        function mostrarItens() {
+            let lista = document.getElementById("pdt")
+                lista.innerHTML = ""
+
+
+
+            for (let p = 0; p < produto.length; p++) {
+
+                let div = document.createElement("div")
+                div.classList.add('item')
+                div.innerHTML = `
+                <img src='${produto[p].imagem}>
+                <h3> ${produto[p].nome} </h3>
+                <p>${produto[p].descricao}`
+
+                lista.appendChild(div)
+
+            }
+        }
+
+        function adicionarProduto() {
+            let nomeRecebido = document.getElementById('nome').value
+            let descricaoRecebido = document.getElementById('descricao').value
+            let imagagemRecebida = document.getElementById('imagem').value
+
+            let produtosNovos = {
+                nome: nomeRecebido,
+                descricao: descricaoRecebido,
+                imagem: imagagemRecebida,
+            }
+            produto.push(produtosNovos)
+            mostrarItens()
+
+
+        }
+
+        mostrarItens()
+
+
+
+    </script>
+</body>
+
+</html>
