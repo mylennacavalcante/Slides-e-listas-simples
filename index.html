@@ -15,18 +15,19 @@
     <main>
         <section>
             <div class="topo">
-                <button>
-
-                    < </button>
-                        <img src="" alt="">
-                        <button> > </button>
+                <button class="seta"><img class="seta"
+                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoTPPQXm-F-s_9yVVAYfbviyhB_WGDW6XR7Q&s"
+                        alt=""></button>
+                <img class="slide" src="" alt="">
+                <button class="seta"><img class="seta" src="https://cdn-icons-png.flaticon.com/512/54/54767.png"
+                        alt=""></button>
             </div>
 
             <div class="top1">
                 <input type="text" id="nome" placeholder="Nome">
                 <input type="text" id="descricao" placeholder="Descrição">
                 <input type="text" id="imagem" placeholder="URL da imagem">
-                <button onclick="adicionarProduto()">adicionar</button>
+                <button class="btnAdd" onclick="adicionarProduto()">adicionar</button>
             </div>
         </section>
         <section id="pdt" class="produtos">
@@ -54,7 +55,7 @@
 
         function mostrarItens() {
             let lista = document.getElementById("pdt")
-                lista.innerHTML = ""
+            lista.innerHTML = ""
 
 
 
@@ -62,10 +63,11 @@
 
                 let div = document.createElement("div")
                 div.classList.add('item')
+                div.innerHTML = ""
                 div.innerHTML = `
-                <img src='${produto[p].imagem}>
+                <img src='${produto[p].imagem}'>
                 <h3> ${produto[p].nome} </h3>
-                <p>${produto[p].descricao}`
+                <p>${produto[p].descricao}</p>`
 
                 lista.appendChild(div)
 
@@ -73,23 +75,26 @@
         }
 
         function adicionarProduto() {
-            let nomeRecebido = document.getElementById('nome').value
-            let descricaoRecebido = document.getElementById('descricao').value
-            let imagemRecebida = document.getElementById('imagem').value
+            let nomeRecebido = document.getElementById('nome')
+            let descricaoRecebido = document.getElementById('descricao')
+            let imagemRecebida = document.getElementById('imagem')
 
             let produtosNovos = {
-                nome: nomeRecebido,
-                descricao: descricaoRecebido,
-                imagem: imagemRecebida,
+                nome: nomeRecebido.value,
+                descricao: descricaoRecebido.value,
+                imagem: imagemRecebida.value ,
             }
             produto.push(produtosNovos)
             mostrarItens()
 
+            nomeRecebido.value = ""
+            descricaoRecebido.value = ""
+            imagemRecebida.value = ""
+            
 
         }
-
+        
         mostrarItens()
-
 
 
     </script>
