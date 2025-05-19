@@ -30,6 +30,9 @@
                 <button class="btnAdd" onclick="adicionarProduto()">adicionar</button>
             </div>
         </section>
+        <div class="favorito">
+            <h3>Favoritos</h3>
+        </div>
         <section id="pdt" class="produtos">
 
         </section>
@@ -38,18 +41,21 @@
         let produto = [{
             nome: "HTML",
             descricao: "Estrutura o conteúdo da página",
-            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZYA3WcTmR_KdPwW87vPuul-FG7Wl5u1T_Q&s"
+            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzZYA3WcTmR_KdPwW87vPuul-FG7Wl5u1T_Q&s",
+            favorito: true
         },
 
         {
             nome: "CSS",
             descricao: "Estiliza o conteúdo",
-            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9c01S6mDjzJA_z4NSwaNYkmTBWrBC2sHwHA&s"
+            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR9c01S6mDjzJA_z4NSwaNYkmTBWrBC2sHwHA&s",
+            favorito: false
         },
         {
             nome: "JavaScript",
             descricao: "Interatividade e comportamento dinâmico",
-            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGE29JAwdezw2GzGhPL-SF0SJhiSehfq6zjA&s"
+            imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGE29JAwdezw2GzGhPL-SF0SJhiSehfq6zjA&s",
+            favorito: false
         }]
 
 
@@ -64,12 +70,20 @@
                 let div = document.createElement("div")
                 div.classList.add('item')
                 div.innerHTML = ""
+
                 div.innerHTML = `
                 <img src='${produto[p].imagem}'>
                 <h3> ${produto[p].nome} </h3>
-                <p>${produto[p].descricao}</p>`
+                <p>${produto[p].descricao}</p>
+                <button onclich="trocarDeLista(${p}">${produto[p].favorito ? "produto" : "favorito"}<button>`
+                
+                    if (produto[p].favorito === false) {
+                        lista.appendChild(div)
+                    }else if(produto[p].favorito === true){
+                        
+                    }
 
-                lista.appendChild(div)
+                
 
             }
         }
@@ -79,10 +93,12 @@
             let descricaoRecebido = document.getElementById('descricao')
             let imagemRecebida = document.getElementById('imagem')
 
+
             let produtosNovos = {
                 nome: nomeRecebido.value,
                 descricao: descricaoRecebido.value,
-                imagem: imagemRecebida.value ,
+                imagem: imagemRecebida.value,
+
             }
             produto.push(produtosNovos)
             mostrarItens()
@@ -90,10 +106,10 @@
             nomeRecebido.value = ""
             descricaoRecebido.value = ""
             imagemRecebida.value = ""
-            
+
 
         }
-        
+
         mostrarItens()
 
 
