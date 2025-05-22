@@ -34,7 +34,8 @@
             <h3>Favoritos</h3>
         </div>
         <section id="pdt" class="produtos">
-
+            
+            <h3>Produtos</h3>
         </section>
     </main>
     <script>
@@ -53,7 +54,7 @@
         },
         {
             nome: "JavaScript",
-            descricao: "Interatividade e comportamento dinâmico",
+            descricao: "Interatividade",
             imagem: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGE29JAwdezw2GzGhPL-SF0SJhiSehfq6zjA&s",
             favorito: false
         }]
@@ -75,7 +76,7 @@
                 <img src='${produto[p].imagem}'>
                 <h3> ${produto[p].nome} </h3>
                 <p>${produto[p].descricao}</p>
-                <button onclich="trocarDeLista(${p}">${produto[p].favorito ? "produto" : "favorito"}<button>`
+                <button onclich="trocarDeLista(${p}">${produto[p].favorito ? "produto" : "favorito"})<button>`
                 
                     if (produto[p].favorito === false) {
                         lista.appendChild(div)
